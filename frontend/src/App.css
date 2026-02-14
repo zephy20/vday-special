@@ -292,13 +292,13 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.4s ease;
 }
 
 @keyframes fadeIn {
@@ -312,19 +312,21 @@ body {
 
 .popup-content {
   position: relative;
-  max-width: 500px;
+  max-width: 480px;
   width: 90%;
-  background: linear-gradient(135deg, #FFE8E8 0%, #FFD4CC 100%);
-  border-radius: 30px;
-  padding: 50px 30px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
-  animation: popupSlideIn 0.5s ease;
+  background: linear-gradient(135deg, #FFF5F5 0%, #FFE8E8 50%, #FFFAF7 100%);
+  border-radius: 40px;
+  padding: 60px 40px;
+  box-shadow: 0 0 60px rgba(255, 182, 193, 0.6), 0 30px 80px rgba(0, 0, 0, 0.2);
+  animation: dreamyPopupIn 0.4s ease-out;
   overflow: hidden;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
-@keyframes popupSlideIn {
+@keyframes dreamyPopupIn {
   from {
-    transform: scale(0.8) translateY(50px);
+    transform: scale(0.9) translateY(20px);
     opacity: 0;
   }
   to {
@@ -333,33 +335,35 @@ body {
   }
 }
 
-.popup-hearts {
+.popup-hearts-subtle {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
+  filter: blur(3px);
+  z-index: 1;
 }
 
-.popup-heart {
+.popup-heart-subtle {
   position: absolute;
-  font-size: 30px;
-  opacity: 0.6;
-  animation: popup-float linear infinite;
-  color: #FF6B9D;
+  font-size: 24px;
+  opacity: 0.12;
+  animation: subtle-float linear infinite;
+  color: #FFB6C1;
 }
 
-@keyframes popup-float {
+@keyframes subtle-float {
   0% {
     transform: translateY(100%) rotate(0deg);
     opacity: 0;
   }
-  10% {
-    opacity: 0.6;
+  20% {
+    opacity: 0.12;
   }
-  90% {
-    opacity: 0.6;
+  80% {
+    opacity: 0.12;
   }
   100% {
     transform: translateY(-100%) rotate(360deg);
@@ -369,14 +373,15 @@ body {
 
 .popup-message {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.3rem, 4vw, 1.8rem);
-  color: #8B4F6F;
+  font-size: clamp(1.5rem, 4.5vw, 2rem);
+  color: #9c4a63;
   text-align: center;
-  margin-bottom: 40px;
-  line-height: 1.6;
-  font-weight: 600;
+  margin-bottom: 50px;
+  line-height: 1.8;
+  font-weight: 500;
   position: relative;
   z-index: 2;
+  letter-spacing: 0.5px;
 }
 
 .popup-buttons {
@@ -386,39 +391,70 @@ body {
   flex-wrap: wrap;
   position: relative;
   z-index: 2;
+  animation: heartbeat 1s ease-in-out 0.5s;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  10%, 30% {
+    transform: scale(1.05);
+  }
+  20%, 40% {
+    transform: scale(1);
+  }
 }
 
 .response-btn {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  font-weight: 600;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-weight: 500;
   color: #fff;
   border: none;
   border-radius: 50px;
-  padding: 15px 40px;
+  padding: 16px 45px;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  min-width: 140px;
+  min-width: 150px;
+  position: relative;
+  overflow: hidden;
+}
+
+.response-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+}
+
+.response-btn:hover::before {
+  left: 100%;
 }
 
 .always-btn {
-  background: linear-gradient(135deg, #FF6B9D 0%, #FF8FAB 100%);
-  box-shadow: 0 8px 30px rgba(255, 107, 157, 0.4);
+  background: linear-gradient(135deg, #FFB3C6 0%, #FFC9D6 100%);
+  box-shadow: 0 8px 25px rgba(255, 179, 198, 0.4);
 }
 
 .always-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(255, 107, 157, 0.6);
+  box-shadow: 0 12px 35px rgba(255, 179, 198, 0.6);
 }
 
 .forever-btn {
-  background: linear-gradient(135deg, #FE9A8B 0%, #FFBCAD 100%);
-  box-shadow: 0 8px 30px rgba(254, 154, 139, 0.4);
+  background: linear-gradient(135deg, #FFCAB0 0%, #FFDAC5 100%);
+  box-shadow: 0 8px 25px rgba(255, 202, 176, 0.4);
 }
 
 .forever-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(254, 154, 139, 0.6);
+  box-shadow: 0 12px 35px rgba(255, 202, 176, 0.6);
 }
 
 .response-btn:active {
@@ -430,49 +466,47 @@ body {
   text-align: center;
   position: relative;
   z-index: 2;
+  animation: softFadeIn 0.6s ease;
 }
 
-.response-text {
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(1.1rem, 3vw, 1.4rem);
-  color: #6B4F5A;
-  margin-bottom: 20px;
+@keyframes softFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.response-highlight {
+.response-final-text {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.3rem, 3.5vw, 1.6rem);
-  color: #C74375;
-  font-weight: 700;
-  display: block;
-  margin-top: 10px;
-}
-
-.response-subtext {
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  color: #A66B8A;
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  color: #9c4a63;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  font-weight: 500;
   font-style: italic;
-  margin-bottom: 30px;
 }
 
 .close-btn {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(1rem, 2.5vw, 1.1rem);
-  font-weight: 600;
+  font-weight: 500;
   color: #fff;
-  background: linear-gradient(135deg, #FF6B9D 0%, #FE9A8B 100%);
+  background: linear-gradient(135deg, #FFB3C6 0%, #FFC9D6 100%);
   border: none;
   border-radius: 50px;
-  padding: 12px 40px;
+  padding: 14px 45px;
   cursor: pointer;
-  box-shadow: 0 8px 30px rgba(255, 107, 157, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 179, 198, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .close-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(255, 107, 157, 0.6);
+  box-shadow: 0 12px 35px rgba(255, 179, 198, 0.6);
 }
 
 .close-btn:active {
