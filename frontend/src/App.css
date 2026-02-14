@@ -663,23 +663,50 @@ body {
 }
 
 .popup-buttons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   gap: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   position: relative;
   z-index: 2;
+  -webkit-animation: heartbeat 1s ease-in-out 0.5s;
   animation: heartbeat 1s ease-in-out 0.5s;
+}
+
+@-webkit-keyframes heartbeat {
+  0%, 100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  10%, 30% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+  20%, 40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
 }
 
 @keyframes heartbeat {
   0%, 100% {
+    -webkit-transform: scale(1);
     transform: scale(1);
   }
   10%, 30% {
+    -webkit-transform: scale(1.05);
     transform: scale(1.05);
   }
   20%, 40% {
+    -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
@@ -693,10 +720,17 @@ body {
   border-radius: 50px;
   padding: 16px 45px;
   cursor: pointer;
+  -webkit-transition: -webkit-transform 0.3s ease, box-shadow 0.3s ease;
+  transition: -webkit-transform 0.3s ease, box-shadow 0.3s ease;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease;
   min-width: 150px;
   position: relative;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .response-btn::before {
@@ -706,8 +740,11 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
+  background: -webkit-linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
   background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
+  -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
 
@@ -716,26 +753,31 @@ body {
 }
 
 .always-btn {
+  background: -webkit-linear-gradient(135deg, #FFB3C6 0%, #FFC9D6 100%);
   background: linear-gradient(135deg, #FFB3C6 0%, #FFC9D6 100%);
   box-shadow: 0 8px 25px rgba(255, 179, 198, 0.4);
 }
 
 .always-btn:hover {
+  -webkit-transform: translateY(-3px);
   transform: translateY(-3px);
   box-shadow: 0 12px 35px rgba(255, 179, 198, 0.6);
 }
 
 .forever-btn {
+  background: -webkit-linear-gradient(135deg, #FFCAB0 0%, #FFDAC5 100%);
   background: linear-gradient(135deg, #FFCAB0 0%, #FFDAC5 100%);
   box-shadow: 0 8px 25px rgba(255, 202, 176, 0.4);
 }
 
 .forever-btn:hover {
+  -webkit-transform: translateY(-3px);
   transform: translateY(-3px);
   box-shadow: 0 12px 35px rgba(255, 202, 176, 0.6);
 }
 
 .response-btn:active {
+  -webkit-transform: translateY(-1px);
   transform: translateY(-1px);
 }
 
