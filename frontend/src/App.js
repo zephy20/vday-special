@@ -33,14 +33,19 @@ function App() {
     setSelectedResponse("");
   };
 
-  const toggleMusic = () => {
+  const toggleMusic = async () => {
     if (audioRef.current) {
-      if (musicPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
+      try {
+        if (musicPlaying) {
+          audioRef.current.pause();
+          setMusicPlaying(false);
+        } else {
+          await audioRef.current.play();
+          setMusicPlaying(true);
+        }
+      } catch (error) {
+        console.error("Error playing audio:", error);
       }
-      setMusicPlaying(!musicPlaying);
     }
   };
 
