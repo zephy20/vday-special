@@ -1,52 +1,196 @@
-import { useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+function App() {
+  const [showPopup, setShowPopup] = useState(false);
+  const [showResponse, setShowResponse] = useState(false);
+  const [selectedResponse, setSelectedResponse] = useState("");
+  const [musicPlaying, setMusicPlaying] = useState(false);
+  const audioRef = useRef(null);
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
+  useEffect(() => {
+    // Fade in sections on load
+    const sections = document.querySelectorAll('.fade-in-section');
+    sections.forEach((section, index) => {
+      setTimeout(() => {
+        section.classList.add('visible');
+      }, index * 200);
+    });
+  }, []);
+
+  const handleSurpriseClick = () => {
+    setShowPopup(true);
+  };
+
+  const handleResponse = (response) => {
+    setSelectedResponse(response);
+    setShowResponse(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+    setShowResponse(false);
+    setSelectedResponse("");
+  };
+
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (musicPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setMusicPlaying(!musicPlaying);
     }
   };
 
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="valentine-container">
+      {/* Floating Hearts Background */}
+      <div className="floating-hearts">
+        {[...Array(15)].map((_, i) => (
+          <div key={i} className="heart" style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 5}s`,
+            animationDuration: `${8 + Math.random() * 4}s`
+          }}>❤</div>
+        ))}
+      </div>
+
+      {/* Music Toggle Button */}
+      <button 
+        onClick={toggleMusic} 
+        className="music-toggle"
+        data-testid="music-toggle-btn"
+      >
+        {musicPlaying ? '🎵' : '🔇'}
+      </button>
+
+      <audio ref={audioRef} loop>
+        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_4a496379cf.mp3" type="audio/mpeg" />
+      </audio>
+
+      {/* Hero Section */}
+      <section className="hero-section fade-in-section" data-testid="hero-section">
+        <h1 className="main-heading" data-testid="main-heading">
+          Happy Valentine's Day, Sree ❤️
+        </h1>
+        <p className="subtext" data-testid="hero-subtext">
+          Forever feels right when it's with you.
+        </p>
+        <p className="playful-text" data-testid="playful-text">
+          — Your future husband (lucky fellow), Kartik 😌
+        </p>
+      </section>
+
+      {/* Photo Section */}
+      <section className="photo-section fade-in-section" data-testid="photo-section">
+        <div className="photo-frame">
+          <img 
+            src="https://customer-assets.emergentagent.com/job_love-sree/artifacts/hdiwot3y_WhatsApp%20Image%202026-02-14%20at%201.21.20%20PM.jpeg" 
+            alt="Kartik and Sreemathy"
+            className="couple-photo"
+            data-testid="couple-photo"
+          />
+        </div>
+      </section>
+
+      {/* Playful Love Note Section */}
+      <section className="love-note-section fade-in-section" data-testid="love-note-section">
+        <div className="content-card">
+          <h2 className="section-heading" data-testid="love-note-heading">
+            Little Confession 💌
+          </h2>
+          <p className="section-text" data-testid="love-note-text">
+            You are my peace in chaos, my comfort in stress, and my happiest thought at the end of every day.
+          </p>
+        </div>
+      </section>
+
+      {/* Emotional Section */}
+      <section className="promise-section fade-in-section" data-testid="promise-section">
+        <div className="content-card">
+          <h2 className="section-heading" data-testid="promise-heading">
+            One Promise 💍
+          </h2>
+          <p className="section-text" data-testid="promise-text">
+            No matter how life changes, how busy days get, or how tough moments feel — I promise to choose you. Not just today. Not just on Valentine's Day. But every single day. In every version of life. With all of me.
+          </p>
+        </div>
+      </section>
+
+      {/* Surprise Button */}
+      <section className="surprise-section fade-in-section" data-testid="surprise-section">
+        <button 
+          className="surprise-btn"
+          onClick={handleSurpriseClick}
+          data-testid="surprise-btn"
         >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+          Tap Here ❤️
+        </button>
+      </section>
 
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      {/* Footer */}
+      <footer className="footer" data-testid="footer">
+        <p>Made with all my love ❤️ — Kartik</p>
+      </footer>
+
+      {/* Popup Modal */}
+      {showPopup && (
+        <div className="popup-overlay" onClick={closePopup} data-testid="popup-overlay">
+          <div className="popup-content" onClick={(e) => e.stopPropagation()} data-testid="popup-content">
+            <div className="popup-hearts">
+              {[...Array(20)].map((_, i) => (
+                <div key={i} className="popup-heart" style={{
+                  left: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 2}s`,
+                  animationDuration: `${3 + Math.random() * 2}s`
+                }}>❤</div>
+              ))}
+            </div>
+            
+            {!showResponse ? (
+              <>
+                <p className="popup-message" data-testid="popup-message">
+                  Will you keep loving me the way you do… for the rest of our forever?
+                </p>
+                <div className="popup-buttons">
+                  <button 
+                    className="response-btn always-btn"
+                    onClick={() => handleResponse('Always ❤️')}
+                    data-testid="always-btn"
+                  >
+                    Always ❤️
+                  </button>
+                  <button 
+                    className="response-btn forever-btn"
+                    onClick={() => handleResponse('Forever 💍')}
+                    data-testid="forever-btn"
+                  >
+                    Forever 💍
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="response-message" data-testid="response-message">
+                <p className="response-text">
+                  You chose: <span className="response-highlight">{selectedResponse}</span>
+                </p>
+                <p className="response-subtext">
+                  That's exactly how I feel too. 💕
+                </p>
+                <button 
+                  className="close-btn"
+                  onClick={closePopup}
+                  data-testid="close-popup-btn"
+                >
+                  Close
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
