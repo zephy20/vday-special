@@ -136,6 +136,7 @@ body {
   position: absolute;
   font-size: 18px;
   opacity: 0.15;
+  -webkit-animation: float-up linear infinite;
   animation: float-up linear infinite;
   color: #FF6B9D;
 }
@@ -144,13 +145,16 @@ body {
   position: absolute;
   font-size: 12px;
   opacity: 0.2;
+  -webkit-animation: sparkle-float linear infinite;
   animation: sparkle-float linear infinite;
   color: #FFD700;
+  -webkit-filter: blur(0.5px);
   filter: blur(0.5px);
 }
 
-@keyframes float-up {
+@-webkit-keyframes float-up {
   0% {
+    -webkit-transform: translateY(100vh) rotate(0deg);
     transform: translateY(100vh) rotate(0deg);
     opacity: 0;
   }
@@ -161,13 +165,34 @@ body {
     opacity: 0.15;
   }
   100% {
+    -webkit-transform: translateY(-100px) rotate(360deg);
     transform: translateY(-100px) rotate(360deg);
     opacity: 0;
   }
 }
 
-@keyframes sparkle-float {
+@keyframes float-up {
   0% {
+    -webkit-transform: translateY(100vh) rotate(0deg);
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.15;
+  }
+  90% {
+    opacity: 0.15;
+  }
+  100% {
+    -webkit-transform: translateY(-100px) rotate(360deg);
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes sparkle-float {
+  0% {
+    -webkit-transform: translateY(100vh) translateX(0) scale(1);
     transform: translateY(100vh) translateX(0) scale(1);
     opacity: 0;
   }
@@ -175,6 +200,7 @@ body {
     opacity: 0.3;
   }
   50% {
+    -webkit-transform: translateY(50vh) translateX(20px) scale(1.2);
     transform: translateY(50vh) translateX(20px) scale(1.2);
     opacity: 0.2;
   }
@@ -182,6 +208,31 @@ body {
     opacity: 0.2;
   }
   100% {
+    -webkit-transform: translateY(-50px) translateX(-20px) scale(0.8);
+    transform: translateY(-50px) translateX(-20px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle-float {
+  0% {
+    -webkit-transform: translateY(100vh) translateX(0) scale(1);
+    transform: translateY(100vh) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  50% {
+    -webkit-transform: translateY(50vh) translateX(20px) scale(1.2);
+    transform: translateY(50vh) translateX(20px) scale(1.2);
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    -webkit-transform: translateY(-50px) translateX(-20px) scale(0.8);
     transform: translateY(-50px) translateX(-20px) scale(0.8);
     opacity: 0;
   }
