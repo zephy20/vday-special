@@ -90,50 +90,21 @@ body {
   overflow: hidden;
 }
 
-.floating-hearts::before {
-  content: '💕';
-  position: absolute;
-  top: 10%;
-  right: 5%;
-  font-size: 40px;
-  opacity: 0.1;
-  animation: gentle-float-right 12s ease-in-out infinite;
-}
-
-.floating-hearts::after {
-  content: '✨';
-  position: absolute;
-  top: 50%;
-  left: 3%;
-  font-size: 35px;
-  opacity: 0.12;
-  animation: gentle-float-left 10s ease-in-out infinite;
-}
-
-@keyframes gentle-float-right {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(10deg);
-  }
-}
-
-@keyframes gentle-float-left {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(20px) rotate(-8deg);
-  }
-}
-
 .heart {
   position: absolute;
-  font-size: 20px;
-  opacity: 0.3;
+  font-size: 18px;
+  opacity: 0.15;
   animation: float-up linear infinite;
   color: #FF6B9D;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 12px;
+  opacity: 0.2;
+  animation: sparkle-float linear infinite;
+  color: #FFD700;
+  filter: blur(0.5px);
 }
 
 @keyframes float-up {
@@ -142,13 +113,34 @@ body {
     opacity: 0;
   }
   10% {
-    opacity: 0.3;
+    opacity: 0.15;
   }
   90% {
-    opacity: 0.3;
+    opacity: 0.15;
   }
   100% {
     transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle-float {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(50vh) translateX(20px) scale(1.2);
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-50px) translateX(-20px) scale(0.8);
     opacity: 0;
   }
 }
