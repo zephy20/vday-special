@@ -144,12 +144,12 @@ function App() {
       {showPopup && (
         <div className="popup-overlay" onClick={closePopup} data-testid="popup-overlay">
           <div className="popup-content" onClick={(e) => e.stopPropagation()} data-testid="popup-content">
-            <div className="popup-hearts">
-              {[...Array(20)].map((_, i) => (
-                <div key={i} className="popup-heart" style={{
+            <div className="popup-hearts-subtle">
+              {[...Array(12)].map((_, i) => (
+                <div key={i} className="popup-heart-subtle" style={{
                   left: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 2}s`,
-                  animationDuration: `${3 + Math.random() * 2}s`
+                  animationDelay: `${Math.random() * 4}s`,
+                  animationDuration: `${8 + Math.random() * 4}s`
                 }}>❤</div>
               ))}
             </div>
@@ -157,7 +157,7 @@ function App() {
             {!showResponse ? (
               <>
                 <p className="popup-message" data-testid="popup-message">
-                  Will you keep loving me the way you do… for the rest of our forever?
+                  Will you choose me… every single day? ❤️
                 </p>
                 <div className="popup-buttons">
                   <button 
@@ -178,11 +178,11 @@ function App() {
               </>
             ) : (
               <div className="response-message" data-testid="response-message">
-                <p className="response-text">
-                  You chose: <span className="response-highlight">{selectedResponse}</span>
-                </p>
-                <p className="response-subtext">
-                  That's exactly how I feel too. 💕
+                <p className="response-final-text">
+                  {selectedResponse === 'Always ❤️' 
+                    ? 'I will too. Always. 🥺'
+                    : 'Then let\'s write our forever together. ✨'
+                  }
                 </p>
                 <button 
                   className="close-btn"
