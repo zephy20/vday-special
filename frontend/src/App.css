@@ -357,15 +357,20 @@ body {
   max-width: 600px;
   width: 100%;
   background: rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border-radius: 30px;
   padding: 40px 30px;
   box-shadow: 0 15px 50px rgba(199, 67, 117, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.5);
+  -webkit-transition: -webkit-transform 0.3s ease, box-shadow 0.3s ease;
+  transition: -webkit-transform 0.3s ease, box-shadow 0.3s ease;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease;
 }
 
 .content-card:hover {
+  -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
   box-shadow: 0 20px 60px rgba(199, 67, 117, 0.25);
 }
