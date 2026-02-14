@@ -714,9 +714,9 @@ body {
 
 .response-btn {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.15rem);
-  font-weight: 500;
-  color: #fff;
+  font-size: clamp(1.1rem, 2.8vw, 1.25rem);
+  font-weight: 700;
+  color: #FFFFFF;
   border: none;
   border-radius: 50px;
   padding: 16px 45px;
@@ -727,54 +727,36 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease;
   min-width: 150px;
   position: relative;
-  overflow: hidden;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.response-btn::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: -webkit-linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-.response-btn:hover::before {
-  left: 100%;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.5px;
 }
 
 .always-btn {
-  background: -webkit-linear-gradient(135deg, #FFB3C6 0%, #FFC9D6 100%);
-  background: linear-gradient(135deg, #FFB3C6 0%, #FFC9D6 100%);
-  box-shadow: 0 8px 25px rgba(255, 179, 198, 0.4);
+  background: -webkit-linear-gradient(135deg, #FF8FA3 0%, #FFB3C1 100%);
+  background: linear-gradient(135deg, #FF8FA3 0%, #FFB3C1 100%);
+  box-shadow: 0 8px 25px rgba(255, 143, 163, 0.5);
 }
 
 .always-btn:hover {
   -webkit-transform: translateY(-3px);
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(255, 179, 198, 0.6);
+  box-shadow: 0 12px 35px rgba(255, 143, 163, 0.7);
 }
 
 .forever-btn {
-  background: -webkit-linear-gradient(135deg, #FFCAB0 0%, #FFDAC5 100%);
-  background: linear-gradient(135deg, #FFCAB0 0%, #FFDAC5 100%);
-  box-shadow: 0 8px 25px rgba(255, 202, 176, 0.4);
+  background: -webkit-linear-gradient(135deg, #FFB396 0%, #FFC9B8 100%);
+  background: linear-gradient(135deg, #FFB396 0%, #FFC9B8 100%);
+  box-shadow: 0 8px 25px rgba(255, 179, 150, 0.5);
 }
 
 .forever-btn:hover {
   -webkit-transform: translateY(-3px);
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(255, 202, 176, 0.6);
+  box-shadow: 0 12px 35px rgba(255, 179, 150, 0.7);
 }
 
 .response-btn:active {
