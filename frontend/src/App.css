@@ -24,6 +24,46 @@ body {
   overflow-x: hidden;
 }
 
+/* Romantic Background Illustrations */
+.valentine-container::before {
+  content: '';
+  position: fixed;
+  bottom: -50px;
+  left: -50px;
+  width: 350px;
+  height: 350px;
+  background: url('https://images.unsplash.com/photo-1737025076184-ab754d4a425e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwzfHxjb3VwbGUlMjBzaWxob3VldHRlJTIwbG92ZSUyMHJvbWFudGljJTIwd2F0ZXJjb2xvcnxlbnwwfHx8fDE3NzEwNTY1MDR8MA&ixlib=rb-4.1.0&q=85') center/cover no-repeat;
+  opacity: 0.08;
+  filter: blur(1px);
+  pointer-events: none;
+  z-index: 1;
+  animation: gentle-sway 8s ease-in-out infinite;
+}
+
+.valentine-container::after {
+  content: '';
+  position: fixed;
+  bottom: -30px;
+  right: -30px;
+  width: 300px;
+  height: 300px;
+  background: url('https://images.unsplash.com/photo-1558715585-9b706788d173?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwyfHxjb3VwbGUlMjBzaWxob3VldHRlJTIwbG92ZSUyMHJvbWFudGljJTIwd2F0ZXJjb2xvcnxlbnwwfHx8fDE3NzEwNTY1MDR8MA&ixlib=rb-4.1.0&q=85') center/cover no-repeat;
+  opacity: 0.06;
+  filter: blur(1px);
+  pointer-events: none;
+  z-index: 1;
+  animation: gentle-sway 10s ease-in-out infinite reverse;
+}
+
+@keyframes gentle-sway {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-15px) translateX(10px);
+  }
+}
+
 /* Floating Hearts Background */
 .floating-hearts {
   position: fixed;
