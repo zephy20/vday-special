@@ -35,27 +35,21 @@ function App() {
     <div className="valentine-container">
       {/* Floating Hearts Background */}
       <div className="floating-hearts">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <div key={i} className="heart" style={{
             left: `${Math.random() * 100}%`,
             animationDelay: `${Math.random() * 5}s`,
             animationDuration: `${8 + Math.random() * 4}s`
           }}>❤</div>
         ))}
+        {[...Array(12)].map((_, i) => (
+          <div key={`sparkle-${i}`} className="sparkle" style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 6}s`,
+            animationDuration: `${10 + Math.random() * 5}s`
+          }}>✨</div>
+        ))}
       </div>
-
-      {/* Music Toggle Button */}
-      <button 
-        onClick={toggleMusic} 
-        className="music-toggle"
-        data-testid="music-toggle-btn"
-      >
-        {musicPlaying ? '🎵' : '🔇'}
-      </button>
-
-      <audio ref={audioRef} loop>
-        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_4a496379cf.mp3" type="audio/mpeg" />
-      </audio>
 
       {/* Hero Section */}
       <section className="hero-section fade-in-section" data-testid="hero-section">
