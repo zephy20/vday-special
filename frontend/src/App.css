@@ -376,12 +376,13 @@ body {
 }
 
 .section-heading {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.9rem, 5.5vw, 2.6rem);
   font-weight: 600;
   color: #C74375;
   margin-bottom: 20px;
   text-align: center;
+  letter-spacing: 0.5px;
 }
 
 .section-text {
