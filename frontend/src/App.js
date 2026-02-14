@@ -1,12 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import "@/App.css";
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
   const [showResponse, setShowResponse] = useState(false);
   const [selectedResponse, setSelectedResponse] = useState("");
-  const [musicPlaying, setMusicPlaying] = useState(false);
-  const audioRef = useRef(null);
 
   useEffect(() => {
     // Fade in sections on load
@@ -31,22 +29,6 @@ function App() {
     setShowPopup(false);
     setShowResponse(false);
     setSelectedResponse("");
-  };
-
-  const toggleMusic = async () => {
-    if (audioRef.current) {
-      try {
-        if (musicPlaying) {
-          audioRef.current.pause();
-          setMusicPlaying(false);
-        } else {
-          await audioRef.current.play();
-          setMusicPlaying(true);
-        }
-      } catch (error) {
-        console.error("Error playing audio:", error);
-      }
-    }
   };
 
   return (
