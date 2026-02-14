@@ -1,0 +1,62 @@
+=================================================================
+📦 FILES TO DOWNLOAD FOR VERCEL DEPLOYMENT
+=================================================================
+
+You need to download the FRONTEND folder from Emergent.
+
+REQUIRED FILES (All inside /app/frontend/):
+---------------------------------------------
+
+1. 📁 /public/
+   └── index.html
+
+2. 📁 /src/
+   ├── App.js
+   ├── App.css
+   ├── index.js
+   ├── index.css
+   └── 📁 components/
+       └── 📁 ui/ (if exists)
+
+3. 📄 package.json
+4. 📄 vercel.json (already created!)
+5. 📄 tailwind.config.js
+6. 📄 postcss.config.js
+7. 📄 craco.config.js (if exists)
+
+=================================================================
+HOW TO DOWNLOAD FROM EMERGENT:
+=================================================================
+
+Method 1: VS Code View (Manual)
+-------------------------------
+1. Click the VS Code icon in Emergent interface
+2. Navigate to /app/frontend/
+3. Right-click each file → Copy content
+4. Paste into corresponding files on your computer
+
+Method 2: Save to GitHub (Automatic - Requires Paid Plan)
+----------------------------------------------------------
+1. Click "Save to GitHub" button in Emergent
+2. Clone the repo to your computer
+3. Navigate to the frontend folder
+
+=================================================================
+AFTER DOWNLOADING:
+=================================================================
+
+Go to: https://vercel.com
+1. Sign up/Login
+2. Click "Add New Project"
+3. Drag & drop your frontend folder
+4. Click "Deploy"
+5. Wait 2 minutes
+6. Get your live URL!
+
+Share URL with Sreemathy: https://[your-project].vercel.app
+
+=================================================================
+DEPLOYMENT GUIDE: Read /app/VERCEL_DEPLOYMENT_GUIDE.md
+=================================================================
+
+Good luck! 💕 - Kartik
