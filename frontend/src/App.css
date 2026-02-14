@@ -597,6 +597,7 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  -webkit-filter: blur(3px);
   filter: blur(3px);
   z-index: 1;
 }
@@ -605,12 +606,14 @@ body {
   position: absolute;
   font-size: 24px;
   opacity: 0.12;
+  -webkit-animation: subtle-float linear infinite;
   animation: subtle-float linear infinite;
   color: #FFB6C1;
 }
 
-@keyframes subtle-float {
+@-webkit-keyframes subtle-float {
   0% {
+    -webkit-transform: translateY(100%) rotate(0deg);
     transform: translateY(100%) rotate(0deg);
     opacity: 0;
   }
@@ -621,6 +624,26 @@ body {
     opacity: 0.12;
   }
   100% {
+    -webkit-transform: translateY(-100%) rotate(360deg);
+    transform: translateY(-100%) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes subtle-float {
+  0% {
+    -webkit-transform: translateY(100%) rotate(0deg);
+    transform: translateY(100%) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.12;
+  }
+  80% {
+    opacity: 0.12;
+  }
+  100% {
+    -webkit-transform: translateY(-100%) rotate(360deg);
     transform: translateY(-100%) rotate(360deg);
     opacity: 0;
   }
