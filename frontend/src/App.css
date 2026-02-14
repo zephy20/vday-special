@@ -4,15 +4,27 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Fix for older browsers */
 .valentine-container {
   min-height: 100vh;
+  min-height: -webkit-fill-available;
   background: linear-gradient(135deg, 
+    #FFE8E8 0%,
+    #FFD4CC 25%,
+    #FFCFC9 50%,
+    #F5E6D3 75%,
+    #FFF0E6 100%
+  );
+  background: -webkit-linear-gradient(135deg, 
     #FFE8E8 0%,
     #FFD4CC 25%,
     #FFCFC9 50%,
