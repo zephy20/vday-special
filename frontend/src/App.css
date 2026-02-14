@@ -651,13 +651,13 @@ body {
 }
 
 .popup-message {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.5rem, 4.5vw, 2rem);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 4.8vw, 2.1rem);
   color: #9c4a63;
   text-align: center;
   margin-bottom: 50px;
   line-height: 1.8;
-  font-weight: 500;
+  font-weight: 600;
   position: relative;
   z-index: 2;
   letter-spacing: 0.5px;
